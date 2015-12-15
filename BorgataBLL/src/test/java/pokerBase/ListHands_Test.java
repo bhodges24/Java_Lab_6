@@ -15,6 +15,7 @@ import enums.eGame;
 import enums.eHandStrength;
 import enums.eRank;
 import enums.eSuit;
+import logic.GameRuleBLL;
 import pokerEnums.eEvalType;
 
 public class ListHands_Test {
@@ -41,9 +42,8 @@ public class ListHands_Test {
 	public void ListHoldEm() {
 		Hand playerHand = new Hand();
 		Hand commonHand = new Hand();
-
-		Rule rle = new Rule(eGame.TexasHoldEm);
-		GamePlay gme = new GamePlay(rle);
+		
+		GamePlay gme = new GamePlay(GameRuleBLL.getGameRule("TexasHoldEm"));
 		
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.ACE, 0));
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.KING, 0));
@@ -58,7 +58,7 @@ public class ListHands_Test {
 
 		AllHands = Hand.ListHands(playerHand, commonHand,gme);
 		System.out.println(AllHands.size());
-		assertTrue(AllHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(AllHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 
 		HashSet hsHands = new HashSet();
 		
@@ -67,7 +67,7 @@ public class ListHands_Test {
 		}
 		
 		//	Check to see if I have N different hands
-		assertTrue(hsHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(hsHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 		
 
 		Hand h = Hand.PickBestHand(AllHands);
@@ -86,8 +86,7 @@ public class ListHands_Test {
 		Hand playerHand = new Hand();
 		Hand commonHand = new Hand();
 
-		Rule rle = new Rule(eGame.Omaha);
-		GamePlay gme = new GamePlay(rle);
+		GamePlay gme = new GamePlay(GameRuleBLL.getGameRule("Omaha"));
 
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.ACE, 0));
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.KING, 0));
@@ -104,7 +103,7 @@ public class ListHands_Test {
 
 		AllHands = Hand.ListHands(playerHand,  commonHand, gme);
 		System.out.println(AllHands.size());
-		assertTrue(AllHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(AllHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 
 		HashSet hsHands = new HashSet();
 		
@@ -113,7 +112,7 @@ public class ListHands_Test {
 		}
 		
 		//	Check to see if I have N different hands
-		assertTrue(hsHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(hsHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 		
 		for (Hand h : AllHands) {
 			System.out.print(h.getCards().get(0).getRank().getRank());
@@ -137,8 +136,7 @@ public class ListHands_Test {
 		Hand playerHand = new Hand();
 		Hand commonHand = new Hand();
 
-		Rule rle = new Rule(eGame.Omaha);
-		GamePlay gme = new GamePlay(rle);
+		GamePlay gme = new GamePlay(GameRuleBLL.getGameRule("Omaha"));
 
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.ACE, 0));
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.KING, 0));
@@ -155,7 +153,7 @@ public class ListHands_Test {
 
 		AllHands = Hand.ListHands(playerHand,  commonHand, gme);
 		System.out.println(AllHands.size());
-		assertTrue(AllHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(AllHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 
 		HashSet hsHands = new HashSet();
 		
@@ -164,7 +162,7 @@ public class ListHands_Test {
 		}
 		
 		//	Check to see if I have N different hands
-		assertTrue(hsHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(hsHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 		
 		for (Hand h : AllHands) {
 			System.out.print(h.getCards().get(0).getRank().getRank());
@@ -187,8 +185,7 @@ public class ListHands_Test {
 		Hand playerHand = new Hand();
 		Hand commonHand = new Hand();
 
-		Rule rle = new Rule(eGame.SevenDraw);
-		GamePlay gme = new GamePlay(rle);
+		GamePlay gme = new GamePlay(GameRuleBLL.getGameRule("SevenCardDraw"));
 		
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.ACE, 0));
 		playerHand.AddCardToHand(new Card(eSuit.CLUBS, eRank.KING, 0));
@@ -204,7 +201,7 @@ public class ListHands_Test {
 
 		AllHands = Hand.ListHands(playerHand, commonHand,gme);
 		System.out.println(AllHands.size());
-		assertTrue(AllHands.size() == gme.getRule().getPossibleHandCombinations());
+		assertTrue(AllHands.size() == gme.getGameRule().getPOSSIBLEHANDCOMBINATIONS());
 
 		for (Hand h : AllHands) {
 			System.out.print(h.getCards().get(0).getRank().getRank());

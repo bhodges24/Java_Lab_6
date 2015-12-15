@@ -24,7 +24,7 @@ public class GamePlay extends GamePlayDomainModel {
 	private GameRuleCardsDomainModel game_rule_cards;
 	private Deck GameDeck = null;
 	
-	public GamePlay(GameRuleDomainModel game_rule, GameRuleCardsDomainModel game_rule_cards)
+	public GamePlay(GameRuleDomainModel game_rule)
 	{
 		this.setGameID(UUID.randomUUID());
 		this.setNbrOfCards(game_rule.getPLAYERNUMBEROFCARDS());
@@ -32,6 +32,11 @@ public class GamePlay extends GamePlayDomainModel {
 		this.setNbrOfJokers(game_rule.getNUMBEROFJOKERS());
 		this.setWildCards(null);
 		this.game_rule = game_rule;
+	}
+	
+	public GamePlay(GameRuleDomainModel game_rule, GameRuleCardsDomainModel game_rule_cards)
+	{
+		this(game_rule);
 		this.game_rule_cards = game_rule_cards;
 	}
 	
