@@ -279,6 +279,7 @@ public class PokerTableController {
 		hs = GameRuleBLL.getRuleHashSet();		
 		GameRuleDomainModel gr = hs.get(strRuleName);
 		
+		PokerTableController.setGameRule(gr);
 		
 		//tglGame = mainApp.getToggleGroup();
 		
@@ -304,7 +305,7 @@ public class PokerTableController {
 		winner4.setVisible(false);
 
 		// Get the Rule, start the Game
-		gme = new GamePlay(game_rule, game_rule_cards);
+		gme = new GamePlay(game_rule);
 
 		// Add the seated players to the game
 		for (Player p : mainApp.GetSeatedPlayers()) {
